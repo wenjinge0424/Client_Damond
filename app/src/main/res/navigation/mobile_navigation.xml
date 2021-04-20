@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/nav_request_patrol">
+
+    <fragment
+        android:id="@+id/nav_request_patrol"
+        android:name="lu.eminozandac.ondamondclinet.ui.requestpatrol.RequestPatrolFragment"
+        android:label="@string/menu_request_patrol"
+        tools:layout="@layout/fragment_request_patrol">
+
+        <action
+            android:id="@+id/action_RequestFragment_to_RPCT"
+            app:destination="@id/nav_RPM_RPC_Time" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_RPM_RPC_Time"
+        android:name="lu.eminozandac.ondamondclinet.ui.requestpatrol.CreateRPTimeFragment"
+        android:label="@string/menu_request_patrol"
+        tools:layout="@layout/fragment_create_rptime">
+        <action
+            android:id="@+id/action_RPCT_to_RequestFragment"
+            app:destination="@id/nav_request_patrol" />
+        <action
+            android:id="@+id/action_RPCT_to_RPPS"
+            app:destination="@id/nav_RPM_RPC_Position" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_RPM_RPC_Position"
+        android:name="lu.eminozandac.ondamondclinet.ui.requestpatrol.CreateRPLocationFragment"
+        android:label="@string/menu_request_patrol"
+        tools:layout="@layout/fragment_create_rpposition">
+        <action
+            android:id="@+id/action_RPCT_to_RequestFragment"
+            app:destination="@id/nav_RPM_RPC_Time" />
+        <action
+            android:id="@+id/action_RPPS_to_RPFN"
+            app:destination="@id/nav_RPPS_RPFN_Position" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_RPPS_RPFN_Position"
+        android:name="lu.eminozandac.ondamondclinet.ui.requestpatrol.CreateRPFinalFragment"
+        android:label="@string/menu_request_patrol"
+        tools:layout="@layout/fragment_create_rpfinal">
+        <action
+            android:id="@+id/action_RPFN_to_RPPS"
+            app:destination="@id/nav_RPM_RPC_Position" />
+        <action
+            android:id="@+id/action_RPFN_to_RPOR"
+            app:destination="@id/nav_request_patrol" />
+
+        <argument
+            android:name="myArg"
+            app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_user_profile"
+        android:name="lu.eminozandac.ondamondclinet.ui.profile.UserProfileFragment"
+        android:label="@string/menu_profile"
+        tools:layout="@layout/fragment_user_profile">
+        <action
+            android:id="@+id/action_PROFILE_to_HOMESETTING"
+            app:destination="@id/nav_home_setting" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_home_setting"
+        android:name="lu.eminozandac.ondamondclinet.ui.profile.HomeSettingFragment"
+        android:label="@string/menu_homesetting"
+        tools:layout="@layout/fragment_home_setting">
+        <action
+            android:id="@+id/action_HOMESETTING_to_ADDCONTACT"
+            app:destination="@id/nav_add_contct" />
+        <action
+            android:id="@+id/action_HOMESETTING_to_ADDHOMEADD"
+            app:destination="@id/nav_add_home_address" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_contct"
+        android:name="lu.eminozandac.ondamondclinet.ui.profile.AddContactFragment"
+        android:label="@string/menu_add_contact"
+        tools:layout="@layout/fragment_add_contact">
+        <action
+            android:id="@+id/action_ADDCONTACT_to_HOMESETTING"
+            app:destination="@id/nav_home_setting" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_add_home_address"
+        android:name="lu.eminozandac.ondamondclinet.ui.profile.AddHomeAddressFragment"
+        android:label="@string/menu_add_home_address"
+        tools:layout="@layout/fragment_add_home_address">
+        <action
+            android:id="@+id/action_ADDHOMEADD_to_HOMESETTING"
+            app:destination="@id/nav_home_setting" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/nav_my_intervention"
+        android:name="lu.eminozandac.ondamondclinet.ui.myintervention.MyInterventionFragment"
+        android:label="@string/menu_my_intervention"
+        tools:layout="@layout/fragment_my_intervention" />
+
+    <fragment
+        android:id="@+id/nav_need_equipment"
+        android:name="lu.eminozandac.ondamondclinet.ui.needeuipment.NeedEquipmentFragment"
+        android:label="@string/menu_need_equipment"
+        tools:layout="@layout/fragment_need_equipment" />
+    <fragment
+        android:id="@+id/nav_help"
+        android:name="lu.eminozandac.ondamondclinet.ui.help.HelpFragment"
+        android:label="@string/menu_help"
+        tools:layout="@layout/fragment_help" />
+
+    <fragment
+        android:id="@+id/nav_legal_notice"
+        android:name="lu.eminozandac.ondamondclinet.ui.legalnotice.LegalNoticeFragment"
+        android:label="@string/menu_legal_notices"
+        tools:layout="@layout/fragment_legal_notice" >
+    </fragment>
+</navigation>

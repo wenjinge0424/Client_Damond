@@ -297,25 +297,29 @@ public class UserProfileFragment extends Fragment implements View.OnClickListene
             currentUser.put(ParseConstants.user_last_name, edt_last_name.getText().toString().trim());
         else if (type == 2)
             currentUser.put(ParseConstants.user_phone, edt_phone_number.getText().toString().trim());
-        else if (type == 3)
+        else if (type == 3) {
             currentUser.setPassword(edt_password.getText().toString());
-        else if (type == 4)
+            currentUser.put(ParseConstants.KEY_PREVIEW_PASSWORD, edt_password.getText().toString().trim());
+        } else if (type == 4)
             currentUser.put(ParseConstants.user_height, edt_height.getText().toString().trim());
         else if (type == 5)
             currentUser.put(ParseConstants.user_family, edt_family.getText().toString().trim());
         else if (type == 6)
             currentUser.put(ParseConstants.user_description, edt_description.getText().toString().trim());
         else if (type == 7 && avatar != null)
-            currentUser.put(ParseConstants.user_description, avatar);
+            currentUser.put(ParseConstants.KEY_AVATAR, avatar);
         mActivity.dlg_progress.show();
         currentUser.saveInBackground(new SaveCallback() {
             @Override
             public void done(ParseException e) {
                 mActivity.dlg_progress.cancel();
-                if (e == null)
+                if (e == null) {
                     MessageUtil.showToast(mActivity, R.string.Success);
-                else
+                    if (MainActivity.instance != null)
+                        MainActivity.instance.initialize();
+                } else {
                     MessageUtil.showToast(mActivity, ParseErrorHandler.handle(e));
+                }
             }
         });
     }
